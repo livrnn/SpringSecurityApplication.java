@@ -1,4 +1,4 @@
-//package com.example.springsecurityapplication.security;
+package com.example.springsecurityapplication.security;//package com.example.springsecurityapplication.security;
 //
 //import com.example.springsecurityapplication.services.PersonDetailsService;
 //import org.springframework.beans.factory.annotation.Autowired;
