@@ -112,77 +112,7 @@ public class MainController {
           @RequestParam(value = "price", required = false, defaultValue = "") String price,
           @RequestParam(value = "category", required = false, defaultValue = "") String category,
           @RequestParam(value = "price", defaultValue = "asc") String sort,
-          Model model)
-
-//      (Model model, @RequestParam(value = "search", required = false) String search,
-//  @RequestParam(value = "category", required = false) String category,
-//  @RequestParam(value = "Ot", required = false) String Ot,
-//  @RequestParam(value = "Do", required = false) String Do,
-//  @RequestParam(value = "price", defaultValue = "asc") String sort)
-
-  {
-//    model.addAttribute("products", productService.getAllProduct());
-//
-//    if (!ot.isEmpty() & !Do.isEmpty()) {
-//      if (!price.isEmpty()) {
-//        if (price.equals("sorted_by_ascending_price")) {
-//          if (!contract.isEmpty()) {
-//            if (contract.equals("clothes")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 1));
-//            } else if (contract.equals("shoes")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 2));
-//            } else if (contract.equals("accessories")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 3));
-//            }
-//          } else {
-//            model.addAttribute("search_product",
-//                productRepository.findByTitleOrderByPriceAsc(search.toLowerCase(),
-//                    Float.parseFloat(ot), Float.parseFloat(Do)));
-//          }
-//        } else if (price.equals("sorted_by_descending_price")) {
-//          if (!contract.isEmpty()) {
-//            System.out.println(contract);
-//            if (contract.equals("clothes")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 1));
-//            } else if (contract.equals("shoes")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 2));
-//            } else if (contract.equals("accessories")) {
-//              model.addAttribute("search_product",
-//                  productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(),
-//                      Float.parseFloat(ot), Float.parseFloat(Do), 3));
-//            }
-//          } else {
-//            model.addAttribute("search_product",
-//                productRepository.findByTitleOrderByPriceDesc(search.toLowerCase(),
-//                    Float.parseFloat(ot), Float.parseFloat(Do)));
-//          }
-//        }
-//      } else {
-//        model.addAttribute("search_product",
-//            productRepository.findByTitleAndPriceGreaterThanEqualAndPriceLessThanEqual(
-//                search.toLowerCase(), Float.parseFloat(ot), Float.parseFloat(Do)));
-//      }
-//    } else {
-//      model.addAttribute("search_product",
-//          productRepository.findByTitleContainingIgnoreCase(search));
-//    }
-//
-//    model.addAttribute("value_search", search);
-//    model.addAttribute("value_price_ot", ot);
-//    model.addAttribute("value_price_do", Do);
-//    return "/product/product";
-    System.out.println("пришли данные: " + category + " " + sort + " " + search);
-    System.out.println("пришли данные: " + Ot + " " + Do);
+          Model model) {
 
     productSearchConditions.checkSearchParameters(search, Ot, Do, category, sort, model, categoryRepository, productRepository);
 
