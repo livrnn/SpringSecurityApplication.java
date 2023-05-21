@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--userPage-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Список товаров</title>
+</head>
+<body>
+<h1>Главная страница магазина</h1>
+<h3>Сортировка, поиск, фильтрация</h3>
+<form th:method="POST" th:action="@{/person account/product/search}">
+    <fieldset>
+        <legend>Выберите параметры для сортировки, поиска, фильтрации:</legend>
+        <label for="search">Поиск по наименованию</label>
+        <input type="text" id="search" name="search" th:value="*{value_search}">
+        <br>
+        <p>Цена, P</p>
+        <label for="Ot">От</label>
+        <input type="text" name="ot" id="Ot" th:value="*{value_price_ot}">
+        <label for="Do">До</label>
+        <input type="text" name="do" id="Do" th:value="*{value_price_do}">
+        <br>
+        <br>
+        <div>
+            <input type="radio" id="ascending_price" name="price" value="sorted_by_ascending_price">
+            <label for="ascending_price">Отсортировать по возрастанию цены</label>
+            <input type="radio" id="descending_price" name="price"
+                   value="sorted_by_descending_price">
+            <label for="descending_price">Отсортировать по убыванию цены</label>
+            <p>Категория товаров: </p>
+            <input type="radio" id="clothes" name="category" value="clothes">
+            <label for="clothes">Одежда</label>
+            <input type="radio" id="shoes" name="category" value="shoes">
+            <label for="shoes">Обувь</label>
+            <input type="radio" id="accessories" name="category" value="accessories">
+            <label for="accessories">Аксессуары</label>
+            <br>
+            <br>
+            <input type="submit" value="Найти">
+        </div>
+    </fieldset>
+</form>
+<!--<form th:method="POST" th:action="@{/product/search}" id="searchForm">-->
+<!--  <fieldset>-->
+<!--                <span class="row_search">-->
+<!--                    <span>-->
+<!--                        <span>-->
+<!--                            <input type="text" name="search" id="search" placeholder="Наименование">-->
+<!--                        </span>-->
+<!--                        <span>-->
+<!--                            <input class="input" type="text" name="Ot" id="Ot" placeholder="от">-->
+<!--                            <input type="text" name="Do" id="Do" placeholder="до">-->
+<!--                        </span>-->
+<!--                        <span>-->
+<!--                            <select type="text" form="searchForm" name="category"-->
+<!--                                    th:value="${category}" class="" size-select-->
+<!--                                    id="category">-->
+<!--                               <option value="">Выберите категорию</option>-->
+<!--                               <option name="option" th:each="element : ${category}"-->
+<!--                                       th:value="${element}" th:text="${element}"-->
+<!--                                       th:selected="${element == category}"></option>-->
+<!--                           </select>-->
+<!--                        </span>-->
+<!--                        <span>-->
+<!--                            <input name="sub" type="submit" value="SEARCH">-->
+<!--                        </span>-->
+<!--                    </span>-->
+<!--                    <span class="radio">-->
+<!--                       <input type="radio" id="ascending_price" name="price" value="asc">-->
+<!--                       <label for="ascending_price">по возрастанию цены</label>-->
+<!--                       <br>-->
+<!--                       <input type="radio" id="descending_price" name="price" value="desc">-->
+<!--                       <label for="descending_price">по убыванию цены</label>-->
+<!--                    </span>-->
+<!--                </span>-->
+<!--  </fieldset>-->
+<!--  <br>-->
+<!--</form>-->
+<span></span>
+<hr>
+<h3>Результат поиска, сортировки, фильтрации</h3>
+<div th:each="product : ${search_product}">
+  <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+  <br>
+  <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+  <p th:text="${product.getTitle()}"></p>
+  <p th:text="${product.getCategory().getName()}"></p>
+  <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+  <hr>
+</div>
+<!--<h3 class="result">Результат поиска</h3>-->
+<!--<div class="body_product">-->
+<!--  <div class="product_section_search">-->
+<!--    <div class="product_card">-->
+<!--      <div th:each="product : ${search_product}" class="product">-->
+<!--        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="200px">-->
+<!--        <br>-->
+<!--        <p th:text="${product.getTitle()}"></p>-->
+<!--        <p th:text="${product.getCategory().getName()}"></p>-->
+<!--        <p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
+<!--        <div class="btn_product">-->
+<!--          <div class="btn_delete">-->
+<!--            <a class="tag_a_delete" th:href="@{/cart/add/{id}(id=${product.getId()})}">ADD CART</a>-->
+<!--          </div>-->
+<!--          <div class="btn_delete">-->
+<!--            <a class="tag_a_delete"-->
+<!--               th:href="@{/product/infouser/{id}(id=${product.getId()})}">INFO</a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<hr>
+<h3>Доступные товары: </h3>
+<div th:each="product : ${products}">
+  <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+  <br>
+  <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+  <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+  <hr>
+</div>
+</body>
+</html>
